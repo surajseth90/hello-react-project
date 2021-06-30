@@ -1,15 +1,22 @@
 import './App.css';
 import React from 'react';
 
-class App extends React.Component{
-  render(){
-    return(
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      title: 'hello form Bridgelabz'
+    }
+  }
+
+  render() {
+    return (
       <div>
         <h1>
-          hello from Bridgelabz
+          {this.state.title}
         </h1>
       </div>
-    )
+    );
   }
 }
 export default App;
