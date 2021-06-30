@@ -7,7 +7,8 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-     user:''
+     user:'',
+     nameError:''
     }
   }
 
@@ -16,7 +17,13 @@ class App extends React.Component {
   }
 
   onNameChange = (event)=>{
+    const nameRegExp = RegExp('^[A-Z]{1}[a-zA-Z\\s]{2,}$')
     this.setState({user:event.target.value})
+    if(nameRegExp.test(event.target.value)){
+      this.setState({nameError:''})
+    }else{
+      this.setState({nameError:'Name is in Incorrect Format'})
+    }
   }
 
   render() {
@@ -31,6 +38,7 @@ class App extends React.Component {
 
       <div>
         <input onChange={this.onNameChange}/>
+        <span className="error-output">{this.state.nameError}</span>
       </div>
       </>
         );
